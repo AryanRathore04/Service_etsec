@@ -1,0 +1,67 @@
+/* new-etsec/src/pages/NotFound.css */
+.not-found-container {
+  min-height: calc(100vh - 100px); /* Adjust for header/footer height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%); /* Consistent background */
+  color: #ffffff;
+  font-family: 'Inter', sans-serif; /* Consistent font */
+  padding: 2rem;
+}
+
+.not-found-title {
+  font-size: clamp(5rem, 15vw, 8rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #ff0080, #cc0066); /* Error-like gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: pulse-error 2s infinite alternate;
+}
+
+@keyframes pulse-error {
+  from { text-shadow: 0 0 10px rgba(255, 0, 128, 0.5); }
+  to { text-shadow: 0 0 25px rgba(255, 0, 128, 0.8); }
+}
+
+.not-found-message {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: #ccc;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.not-found-home-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, #00d4ff, #0099cc); /* Button gradient */
+  color: #000000;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+.not-found-home-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+  .not-found-title {
+    font-size: 4rem;
+  }
+  .not-found-message {
+    font-size: 1rem;
+  }
+  .not-found-home-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

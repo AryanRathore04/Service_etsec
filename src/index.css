@@ -1,0 +1,94 @@
+/* new-etsec/src/index.css */
+
+/* Global Reset and Base Styles */
+* {
+  box-sizing: border-box; /* Ensures padding and border are included in element's total width/height */
+}
+
+body {
+  margin: 0;
+  /* padding-top: 80px; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Ensure body is scrollable if content overflows */
+  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+/* Custom Scrollbar Styles */
+/* These styles target Webkit-based browsers (Chrome, Safari, Edge, Opera) */
+
+/* Overall scrollbar width */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust width as desired */
+}
+
+/* Scrollbar track (the background area of the scrollbar) */
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Dark background matching your theme */
+  border-radius: 4px; /* Match thumb radius if desired */
+}
+
+/* Scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: #00d4ff; /* Vibrant blue/cyan color from your theme */
+  border-radius: 4px; /* Rounded corners for the thumb */
+}
+
+/* Scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0099cc; /* Slightly darker shade on hover */
+}
+
+/* You can also style the corners and buttons if they appear, though usually not needed with simple custom bars */
+::-webkit-scrollbar-corner {
+  background: transparent; /* Make corners transparent */
+}
+/* ::-webkit-scrollbar-button {
+  display: none; // Hide default scrollbar buttons if they exist
+} */
+
+/* For Firefox (more limited styling options) */
+html {
+  scrollbar-width: thin; /* "auto" or "none" */
+  scrollbar-color: #00d4ff #1a1a1a; /* thumb color track color */
+}
+
+/* Responsive helpers */
+:root {
+  --break-sm: 480px;
+  --break-md: 768px;
+  --container-max: 1400px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(1rem, 2.5vw, 2rem);
+  padding-right: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* Make images and media scale responsively by default */
+img,
+picture,
+video,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility: readable text blocks on small screens */
+.text-center-mobile {
+  text-align: center;
+}

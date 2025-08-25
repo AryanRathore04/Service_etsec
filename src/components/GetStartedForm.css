@@ -1,0 +1,404 @@
+/* new-etsec/src/components/GetStartedForm.css */
+
+/* Reuse styles from existing popups as much as possible */
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup-content {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.9) 0%,
+    rgba(26, 26, 46, 0.9) 100%
+  );
+  border-radius: 25px;
+  padding: 3rem;
+  max-width: 650px; /* Increased max-width for more content */
+  width: 90%;
+  max-height: 90vh; /* Allow vertical scrolling within the popup */
+  overflow-y: auto; /* Enable scrolling for content exceeding max-height */
+  overflow-x: hidden;
+  position: relative;
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+  animation: slideIn 0.5s ease;
+  backdrop-filter: blur(20px);
+}
+
+.popup-circuit-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      45deg,
+      transparent 48%,
+      rgba(0, 255, 255, 0.05) 49%,
+      rgba(0, 255, 255, 0.05) 51%,
+      transparent 52%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 48%,
+      rgba(255, 0, 128, 0.05) 49%,
+      rgba(255, 0, 128, 0.05) 51%,
+      transparent 52%
+    );
+  background-size: 20px 20px;
+  border-radius: 25px;
+  pointer-events: none;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scale(0.8) translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ffffff;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  background: rgba(255, 0, 128, 0.2);
+  transform: rotate(180deg) scale(1.1);
+  color: #ff0080;
+}
+
+.popup-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #00ffff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.popup-subtitle {
+  color: #cccccc;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+/* Form Specific Styles for GetStartedForm */
+.custom-getstarted-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Slightly reduced gap for more content */
+}
+
+.form-section-title {
+  color: #00ffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  /* Added form-select style */
+  width: 100%;
+  padding: 15px 20px; /* Slightly adjusted padding */
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(10px);
+  font-family: inherit; /* Ensure font consistency */
+}
+
+.input-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  background: linear-gradient(45deg, #00ffff, #ff0080) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: exclude;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none; /* Ensure glow doesn't interfere with input focus */
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  /* Added form-select focus */
+  outline: none;
+  border-color: transparent;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.form-input:focus + .input-glow,
+.form-textarea:focus + .input-glow,
+.form-select:focus + .input-glow {
+  /* Added form-select focus glow */
+  opacity: 1;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #888;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px; /* Adjusted min-height */
+}
+
+/* Select arrow for dropdown */
+.service-group-selection {
+  position: relative;
+}
+.form-select {
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.5rem; /* Space for custom arrow */
+}
+.select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #00ffff;
+  pointer-events: none;
+  font-size: 1.2rem;
+}
+.select-arrow::after {
+  content: "▼";
+}
+
+/* Checkbox specific styles */
+.service-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem; /* Indent checkboxes slightly */
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  color: #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.checkbox-label:hover {
+  color: #fff;
+}
+
+.checkbox-label input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  border-radius: 4px;
+  margin-right: 0.8rem;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.checkbox-label input[type="checkbox"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
+  box-shadow: inset 1em 1em #00ffff; /* Checkmark color */
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 60%);
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+  background-color: #00ffff;
+  border-color: #00ffff;
+}
+
+.checkbox-label input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+.pricing-disclaimer {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Submit Button Styles */
+.submit-btn {
+  position: relative;
+  background: linear-gradient(45deg, #ff0080, #00ffff);
+  border: none;
+  padding: 18px 40px;
+  border-radius: 50px;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 1rem;
+  box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4);
+}
+
+.submit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 0, 128, 0.6);
+}
+
+.btn-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transition: left 0.6s ease;
+  pointer-events: none; /* Crucial: ensures glow doesn't block button clicks */
+}
+
+.submit-btn:hover .btn-glow {
+  left: 100%;
+}
+
+/* Responsive Design for GetStartedForm */
+@media (max-width: 768px) {
+  .popup-content {
+    padding: 2rem;
+    width: 95%; /* Adjust width for smaller screens */
+    max-height: 95vh;
+  }
+  .popup-title {
+    font-size: 1.8rem;
+  }
+  .popup-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .custom-getstarted-form {
+    gap: 1rem;
+  }
+  .form-section-title {
+    font-size: 1.1rem;
+    margin-top: 0.75rem;
+  }
+  .form-input,
+  .form-textarea,
+  .form-select {
+    padding: 12px 15px; /* Smaller padding for mobile inputs */
+    font-size: 0.95rem;
+  }
+  .submit-btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+  .checkbox-label {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-content {
+    padding: 1rem;
+    width: 98%;
+    max-width: 420px;
+  }
+  .popup-title {
+    font-size: 1.4rem;
+  }
+  .popup-subtitle {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-content {
+    padding: 1.5rem;
+  }
+  .popup-title {
+    font-size: 1.6rem;
+  }
+  .form-input,
+  .form-textarea,
+  .form-select {
+    padding: 10px 12px;
+  }
+  .submit-btn {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
+}

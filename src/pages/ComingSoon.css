@@ -1,0 +1,61 @@
+/* new-etsec/src/pages/ComingSoon.css */
+.coming-soon-container {
+  min-height: calc(100vh - 100px); /* Adjust for header/footer height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%); /* Consistent background */
+  color: #ffffff;
+  font-family: 'Inter', sans-serif; /* Consistent font */
+  padding: 2rem;
+}
+
+.coming-soon-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #00d4ff, #0099cc); /* Accent gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.coming-soon-message {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #a0a0a0;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.coming-soon-home-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, #00d4ff, #0099cc); /* Button gradient */
+  color: #000000;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+.coming-soon-home-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+  .coming-soon-title {
+    font-size: 2rem;
+  }
+  .coming-soon-message {
+    font-size: 0.9rem;
+  }
+  .coming-soon-home-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
