@@ -1,46 +1,76 @@
 // new-etsec/src/pages/Services.js
-import React from 'react';
-import './Services.css';
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import "./Services.css";
+import { useNavigate } from "react-router-dom";
 
 function Services() {
   const navigate = useNavigate();
 
   const services = [
     {
-      title: 'Cyber Security Solutions',
-      items: ['SOC Setup & Management', 'Network Operations & Monitoring', 'VAPT', 'Threat Intelligence & Reporting','Malware Analysis & Forensics','Blue Teaming Solutions'],
-      icon: '🛡️',
-      className: 'cyber-security',
-      link: '/explorecyber'
+      title: "Cyber Security Solutions",
+      items: [
+        "SOC Setup & Management",
+        "Network Operations & Monitoring",
+        "VAPT",
+        "Threat Intelligence & Reporting",
+        "Malware Analysis & Forensics",
+        "Blue Teaming Solutions",
+      ],
+      icon: "🛡️",
+      className: "cyber-security",
+      link: "/explorecyber",
     },
     {
-      title: 'Satellite Security Services',
-      items: ['Satelite Protocol VAPT', 'Secure Code Analysis','Cyber Architecture','Ground Station Auditing','Ground Station VAPT'],
-      icon: '🛰️',
-      className: 'satellite-security',
-      link: '/satellite-security'
+      title: "Satellite Security Services",
+      items: [
+        "Satelite Protocol VAPT",
+        "Secure Code Analysis",
+        "Cyber Architecture",
+        "Ground Station Auditing",
+        "Ground Station VAPT",
+      ],
+      icon: "🛰️",
+      className: "satellite-security",
+      link: "/satellite-security",
     },
     {
-      title: 'Blockchain Solutions',
-      items: ['Smart Contract VAPT', 'Blockchain Protocol Auditing','Network Infrastructure Auditing'],
-      icon: '⛓️',
-      className: 'blockchain-solution',
-      link : '/blockchain-solution'
-    }
+      title: "Blockchain Solutions",
+      items: [
+        "Smart Contract VAPT",
+        "Blockchain Protocol Auditing",
+        "Network Infrastructure Auditing",
+      ],
+      icon: "⛓️",
+      className: "blockchain-solution",
+      link: "/blockchain-solution",
+    },
+    {
+      title: "Secure Web Development",
+      items: [
+        "Data Encryption",
+        "Authentication & Authorization",
+        "Secure Coding Practices",
+        "API Security",
+        "Database Security",
+      ],
+      icon: "🔐",
+      className: "secure-web-development",
+      link: "/secure-web-development",
+    },
   ];
-  
+
   const handleButtonClick = (url) => {
-      const isExternal = url.startsWith('http://') || url.startsWith('https://');
-      if (isExternal) {
-          window.open(url, '_blank');
-      } else {
-          navigate(url);
-      }
+    const isExternal = url.startsWith("http://") || url.startsWith("https://");
+    if (isExternal) {
+      window.open(url, "_blank");
+    } else {
+      navigate(url);
+    }
   };
 
   const handleComingSoon = () => {
-    navigate('/coming-soon');
+    navigate("/coming-soon");
   };
 
   return (
@@ -64,7 +94,8 @@ function Services() {
           </h1>
 
           <p className="main-description">
-            Next-generation security solutions powered by cutting-edge technology to safeguard your digital ecosystem
+            Next-generation security solutions powered by cutting-edge
+            technology to safeguard your digital ecosystem
           </p>
 
           <div className="title-divider">
@@ -76,10 +107,7 @@ function Services() {
 
         <div className="services-grid">
           {services.map((service, idx) => (
-            <div
-              key={idx}
-              className={`service-card ${service.className}`}
-            >
+            <div key={idx} className={`service-card ${service.className}`}>
               <div className="card-border"></div>
               <div className="card-glow"></div>
               <div className="card-content">
@@ -90,23 +118,40 @@ function Services() {
                 <h2 className="service-title">{service.title}</h2>
 
                 {/* ✅ ADDED DESCRIPTION BASED ON SERVICE TYPE */}
-                {service.title === 'Cyber Security Solutions' && (
+                {service.title === "Cyber Security Solutions" && (
                   <p className="service-description">
-                    Protect your digital infrastructure with end-to-end cybersecurity services including proactive threat detection, secure network operations, deep malware analysis, and effective incident response strategies.
+                    Protect your digital infrastructure with end-to-end
+                    cybersecurity services including proactive threat detection,
+                    secure network operations, deep malware analysis, and
+                    effective incident response strategies.
                   </p>
                 )}
-                {service.title === 'Satellite Security Services' && (
+                {service.title === "Satellite Security Services" && (
                   <p className="service-description">
-                    Ensure the security of satellite communication and infrastructure with specialized services like secure code auditing, satellite VAPT protocols, and cybersecurity architecture for ground stations.
+                    Ensure the security of satellite communication and
+                    infrastructure with specialized services like secure code
+                    auditing, satellite VAPT protocols, and cybersecurity
+                    architecture for ground stations.
                   </p>
                 )}
-                {service.title === 'Blockchain Solutions' && (
+                {service.title === "Blockchain Solutions" && (
                   <p className="service-description">
-                    Secure your decentralized applications and blockchain protocols with smart contract audits, protocol vulnerability assessment, and complete infrastructure security for Web3 and beyond.
+                    Secure your decentralized applications and blockchain
+                    protocols with smart contract audits, protocol vulnerability
+                    assessment, and complete infrastructure security for Web3
+                    and beyond.
+                  </p>
+                )}
+                {service.title === "Secure Web Development" && (
+                  <p className="service-description">
+                    Build secure, robust web applications with comprehensive
+                    security measures including data encryption, authentication
+                    systems, secure coding practices, and vulnerability
+                    prevention from the ground up.
                   </p>
                 )}
 
-              {/*  <ul className="service-list">
+                {/*  <ul className="service-list">
                   {service.items.map((item, index) => (
                     <li key={index} className="service-item">
                       <div className="item-dot"></div>
@@ -114,7 +159,7 @@ function Services() {
                     </li>
                   ))}
                 </ul>
-*/} 
+*/}
                 <button
                   className="service-button"
                   onClick={() => handleButtonClick(service.link)}
@@ -136,10 +181,12 @@ function Services() {
             <div className="cta-glow"></div>
             <div className="cta-content">
               <h3 className="cta-title">
-                Ready to <span className="cta-gradient">Secure</span> Your Future?
+                Ready to <span className="cta-gradient">Secure</span> Your
+                Future?
               </h3>
               <p className="cta-description">
-                Join the next generation of cybersecurity with our expert team and cutting-edge solutions
+                Join the next generation of cybersecurity with our expert team
+                and cutting-edge solutions
               </p>
               <div className="cta-buttons">
                 <button className="cta-primary" onClick={handleComingSoon}>
