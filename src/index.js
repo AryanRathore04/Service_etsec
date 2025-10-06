@@ -19,6 +19,7 @@ import SatelliteSecurity from "./pages/SatelliteSecurity";
 import ExploreBlockchain from "./pages/ExploreBlockchain";
 import VAPTServices from "./pages/VAPTServices";
 import SecureWebDevelopment from "./pages/SecureWebDevelopment";
+import GetStartedPage from "./pages/GetStartedPage";
 // import SomaDetails from './pages/SomaDetails';
 import ComingSoon from "./pages/ComingSoon"; // NEW: Import ComingSoon
 import NotFound from "./pages/NotFound"; // NEW: Import NotFound
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Home /> },
+      { path: "get-started", element: <GetStartedPage /> },
       { path: "services", element: <Services /> },
       { path: "terms", element: <Terms /> },
       { path: "clients", element: <Clients /> },

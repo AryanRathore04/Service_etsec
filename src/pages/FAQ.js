@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { HelpCircle, Shield, Settings, Clock, Lock, Package, ChevronDown, ChevronUp, Search, MessageCircle } from 'lucide-react';
+import { HelpCircle, Shield, Settings, Clock, Lock, Package, ChevronDown, ChevronUp } from 'lucide-react';
 
-const FAQPage = () => {
-  const [activeQuestion, setActiveQuestion] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [filteredFAQs, setFilteredFAQs] = useState([]);
-
-  const faqData = [
+// Move faqData outside the component to avoid recreating it on every render
+const faqData = [
     {
       id: 1,
       question: "What cybersecurity services does ETSEC offer?",
@@ -76,6 +72,12 @@ We can tailor the engagement model to suit your budget and security posture.`,
     }
   ];
 
+const FAQPage = () => {
+  // faqData is static (module scope) so it's safe to reference directly
+  const [activeQuestion, setActiveQuestion] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredFAQs, setFilteredFAQs] = useState([]);
+
   useEffect(() => {
     const filtered = faqData.filter(faq =>
       faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -89,7 +91,7 @@ We can tailor the engagement model to suit your budget and security posture.`,
     setActiveQuestion(activeQuestion === id ? null : id);
   };
 
-  const categories = [...new Set(faqData.map(faq => faq.category))];
+  // categories variable removed because it's not used
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 relative overflow-hidden">

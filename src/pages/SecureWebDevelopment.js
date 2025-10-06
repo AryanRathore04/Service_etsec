@@ -61,7 +61,7 @@ const SecureWebDevelopment = () => {
       <header className={`header ${isVisible ? "fade-in" : ""}`}>
         <div className="header-content">
           <h1 className="main-title">
-            <span className="shield-icon">🛡️</span>
+            <Shield className="shield-icon" />
             Secure Web Development
           </h1>
           <p className="subtitle">
@@ -216,21 +216,39 @@ const SecureWebDevelopment = () => {
                 </div>
               </div>
             </div>
-            <div className="standards-right">
-              <div className="security-stats">
-                <div className="stat-item">
-                  <h3>99.9%</h3>
-                  <p>Security Vulnerability Prevention</p>
-                </div>
-                <div className="stat-item">
-                  <h3>100+</h3>
-                  <p>Secure Applications Delivered</p>
-                </div>
-                <div className="stat-item">
-                  <h3>24/7</h3>
-                  <p>Security Monitoring</p>
+            {/* Right column stats commented out for now. */}
+            {false && (
+              <div className="standards-right">
+                <div className="security-stats">
+                  <div className="stat-item">
+                    <h3>99.9%</h3>
+                    <p>Security Vulnerability Prevention</p>
+                  </div>
+                  <div className="stat-item">
+                    <h3>100+</h3>
+                    <p>Secure Applications Delivered</p>
+                  </div>
+                  <div className="stat-item">
+                    <h3>24/7</h3>
+                    <p>Security Monitoring</p>
+                  </div>
                 </div>
               </div>
+            )}
+
+            {/* New simplified single-column CTA */}
+            <div className="standards-cta">
+              <h3>Ready for a security-first web app?</h3>
+              <p>
+                Book an architectural review or request a secure development
+                proposal tailored to your needs.
+              </p>
+              <button
+                className="standards-cta-btn"
+                onClick={openGetStartedForm}
+              >
+                Request Secure Development
+              </button>
             </div>
           </div>
         </div>

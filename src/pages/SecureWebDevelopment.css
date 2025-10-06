@@ -225,8 +225,29 @@
 }
 
 .shield-icon {
-  font-size: clamp(2rem, 4vw, 3rem);
-  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.4));
+  width: clamp(2rem, 4vw, 3rem);
+  height: clamp(2rem, 4vw, 3rem);
+  display: inline-block;
+  vertical-align: middle;
+  /* Use SVG-specific rendering hints for crisp edges */
+  shape-rendering: crispEdges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.35));
+  backface-visibility: hidden;
+}
+
+/* Color the lucide SVG via currentColor and add a subtle hover glow */
+.shield-icon svg,
+.shield-icon {
+  color: #00ffff; /* primary cyan */
+  stroke: currentColor;
+  fill: none; /* lucide icons are stroke-based */
+}
+.shield-icon:hover {
+  filter: drop-shadow(0 0 14px rgba(0, 255, 255, 0.6));
+  transform: translateY(-2px);
 }
 
 .subtitle {
@@ -518,18 +539,35 @@
 /* Standards Section */
 .standards-section {
   padding: 4rem 2rem;
+  /* Make the section take a larger min-height so it can be centered */
+  min-height: 50vh;
+  display: flex;
+  align-items: center; /* vertical centering */
+  justify-content: center; /* horizontal centering */
 }
 
 .standards-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  /* Use a single-column centered layout so the standards block sits in the middle */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center; /* center children horizontally */
+  justify-content: center; /* center children vertically within the section */
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.standard-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .standards-left h2 {
-  text-align: left;
-  margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .standards-description {
@@ -541,18 +579,23 @@
 
 .standards-list {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: row;
+  gap: 1rem 1.25rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .standard-item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(0, 255, 255, 0.05);
-  border-radius: 10px;
-  border: 1px solid rgba(0, 255, 255, 0.1);
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  background: rgba(0, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 255, 255, 0.08);
+  min-width: 180px;
+  justify-content: center;
 }
 
 .standard-badge {
@@ -590,6 +633,47 @@
   color: #00ffff;
   margin-bottom: 0.5rem;
   font-weight: 700;
+}
+
+/* Simplified CTA styling for Security Standards section */
+.standards-cta {
+  width: 100%;
+  max-width: 760px;
+  text-align: center;
+  padding: 2rem 1.25rem;
+  background: rgba(0, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 255, 0.06);
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.standards-cta h3 {
+  color: #00ffff;
+  margin-bottom: 0.5rem;
+}
+
+.standards-cta p {
+  color: #cfdcdc;
+  margin-bottom: 1rem;
+}
+
+.standards-cta-btn {
+  background: linear-gradient(45deg, #00ffff, #0080ff);
+  color: #000;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.standards-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.12);
 }
 
 .stat-item p {
@@ -698,5 +782,11 @@
   .intro-text {
     padding: 1rem;
     font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .standards-section {
+    min-height: 65vh;
   }
 }

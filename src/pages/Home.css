@@ -324,7 +324,7 @@ body {
   line-height: 1.6;
 }
 
-.cta-container {
+.home .stats-container {
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -402,26 +402,70 @@ body {
   transform: translateX(4px);
 }
 
-.stats-container {
+/* Keep CTA buttons inline on desktop for the Home page */
+.home .cta-container {
   display: flex;
-  gap: 3rem;
+  gap: 1rem;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* prevent wrapping on desktop */
 }
 
-.stat-item {
+.home .cta-container .cta-button {
+  width: auto; /* don't force full width on desktop */
+}
+
+/* Strong desktop rule to ensure CTAs on the hero stay horizontal */
+@media (min-width: 769px) {
+  .home .content .cta-container {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .home .content .cta-container .cta-button {
+    width: auto !important;
+  }
+}
+
+.home .stats-container {
+  /* Force a single horizontal row on wider viewports */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; /* prevent wrapping to multiple lines */
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem; /* small horizontal padding to avoid touching edges */
+  margin: 0 auto 2.5rem auto;
+  overflow-x: auto; /* allow horizontal scroll if viewport is too narrow */
+}
+
+.home .stat-item {
   text-align: center;
+  padding: 1.5rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(0, 212, 255, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 220px; /* ensure consistent card width so items align horizontally */
+  flex: 0 0 220px; /* fixed width cards to prevent wrapping */
 }
 
-.stat-number {
+.home .stat-number {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #00d4ff;
   margin-bottom: 0.5rem;
 }
 
-.stat-label {
-  font-size: 0.9rem;
+.home .stat-label {
+  font-size: 0.85rem;
   color: #a0a0a0;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -909,7 +953,7 @@ body {
     padding-left: 0; /* Ensure padding is symmetrical after width 100% */
   }
 
-  .cta-container {
+  .home .cta-container {
     flex-direction: column;
     align-items: center;
   }
@@ -946,9 +990,26 @@ body {
     justify-content: center;
   }
 
-  .stats-container {
-    flex-direction: column;
-    gap: 2rem;
+  /* Mobile-specific smaller CTA sizing for hero buttons */
+  .home .cta-container .cta-button {
+    max-width: 320px; /* prevent buttons from becoming extremely wide on small viewports */
+    padding: 12px 20px; /* reduce vertical height */
+    font-size: 0.95rem; /* slightly smaller text */
+    border-radius: 40px;
+  }
+
+  .home .cta-container .cta-button.primary .button-text,
+  .home .cta-container .cta-button.secondary .button-text {
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+
+  .home .stats-container {
+    /* On smaller screens stack the stats vertically */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 0; /* remove horizontal scroll padding on mobile */
   }
 
   .section-header {
@@ -1024,7 +1085,7 @@ body {
 
 .services-grid-featured {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 2fr);
   gap: 2.5rem;
   padding: 0 1rem;
 }
@@ -1073,7 +1134,8 @@ body {
 .service-card.primary-highlight {
   background: linear-gradient(135deg, #004e6b, #001a25);
   border: 1px solid #00d4ff;
-  box-shadow: 0 15px 50px rgba(0, 212, 255, 0.25), 0 0 150px rgba(0, 212, 255, 0.15) inset;
+  box-shadow: 0 15px 50px rgba(0, 212, 255, 0.25),
+    0 0 150px rgba(0, 212, 255, 0.15) inset;
   padding: 3.5rem;
 }
 

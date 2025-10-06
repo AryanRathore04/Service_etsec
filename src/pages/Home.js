@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css"; // Import your CSS styles for the Home component
-import somaDiagramScreenshot from "../assets/Screenshot_16-7-2025_13145_etsecinc.com.jpeg"; // Adjust path as needed
+// Removed unused image import to fix lint warning
 import { useNavigate } from "react-router-dom";
 
 function Home() {
@@ -17,9 +17,8 @@ function Home() {
   };
 
   const handleGetStarted = () => {
-    // Example: Navigate to a contact or assessment page within your app
-    navigate("/coming-soon"); // Replace with your actual path
-    console.log("Navigate to get started (Contact/Assessment)");
+    // Navigate to the standalone Get Started page and pass the group via query string
+    navigate("/get-started?group=security-assessment");
   };
 
   const handleContactExperts = () => {
@@ -200,6 +199,7 @@ function Home() {
               </svg>
             </button>
           </div>
+          {/* Standalone page will handle rendering the form now */}
 
           <div className="stats-container" style={{ marginBottom: "2.5rem" }}>
             <div className="stat-item">
@@ -223,8 +223,8 @@ function Home() {
         <div className="section-header">
           <h2 className="section-title">Our Core Services</h2>
           <p className="section-subtitle">
-            Specialized services designed to protect your most critical assets from
-            emerging threats.
+            Specialized services designed to protect your most critical assets
+            from emerging threats.
           </p>
         </div>
         <div className="services-grid-featured">
@@ -253,20 +253,20 @@ function Home() {
             </div>
           </article>
 
-          <article
-            className="service-card"
-            aria-labelledby="soma-title"
-          >
+          <article className="service-card" aria-labelledby="soma-title">
             <div className="service-card-content">
-              <h3 id="soma-title" className="service-card-title underline-title">
+              <h3
+                id="soma-title"
+                className="service-card-title underline-title"
+              >
                 SOMA Framework
               </h3>
               <p className="service-card-subtitle">
                 Space Attack Research & Tactics Analysis
               </p>
               <p className="service-card-description">
-                Our cutting-edge framework for unparalleled space domain security
-                analysis and defense.
+                Our cutting-edge framework for unparalleled space domain
+                security analysis and defense.
               </p>
               <button
                 className="cta-button secondary"

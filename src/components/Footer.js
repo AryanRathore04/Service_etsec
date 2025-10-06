@@ -1,5 +1,5 @@
 // new-etsec/src/components/Footer.js
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import EtsecLogo from "../assets/ETSEC.png"; // Assuming ETSEC.png is in src/assets/

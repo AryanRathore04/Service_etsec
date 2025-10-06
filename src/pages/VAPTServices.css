@@ -190,11 +190,19 @@
   padding: 80px 0;
 }
 
-.benefits-content {
+/* .benefits-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
+} */
+
+.benefits-content{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
 }
 
 .benefits-description {

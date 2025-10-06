@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./VAPTServices.css";
-import { Star, Shield, Target, Lock, Search, AlertTriangle, CheckCircle } from "lucide-react";
+import { Shield, Target, Search, AlertTriangle, CheckCircle } from "lucide-react";
 
 const VAPTServices = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -12,23 +13,27 @@ const VAPTServices = () => {
     {
       icon: <Search className="feature-icon" />,
       title: "Comprehensive Vulnerability Assessment",
-      description: "Systematic identification and classification of security vulnerabilities across your entire digital infrastructure."
+      description:
+        "Systematic identification and classification of security vulnerabilities across your entire digital infrastructure.",
     },
     {
       icon: <Target className="feature-icon" />,
       title: "Advanced Penetration Testing",
-      description: "Ethical hacking techniques to exploit identified vulnerabilities and assess real-world security impact."
+      description:
+        "Ethical hacking techniques to exploit identified vulnerabilities and assess real-world security impact.",
     },
     {
       icon: <Shield className="feature-icon" />,
       title: "Risk-Based Analysis",
-      description: "Prioritized recommendations based on business impact and exploitability to optimize security investments."
+      description:
+        "Prioritized recommendations based on business impact and exploitability to optimize security investments.",
     },
     {
       icon: <AlertTriangle className="feature-icon" />,
       title: "Threat Modeling",
-      description: "Identification of potential attack vectors and threat scenarios specific to your business environment."
-    }
+      description:
+        "Identification of potential attack vectors and threat scenarios specific to your business environment.",
+    },
   ];
 
   const benefits = [
@@ -37,11 +42,11 @@ const VAPTServices = () => {
     "Reduce risk of data breaches and cyber attacks",
     "Improve overall security posture and resilience",
     "Gain actionable insights for security improvements",
-    "Validate existing security controls effectiveness"
+    "Validate existing security controls effectiveness",
   ];
 
   return (
-    <div className={`vapt-container ${isVisible ? 'visible' : ''}`}>
+    <div className={`vapt-container ${isVisible ? "visible" : ""}`}>
       {/* Background Animation */}
       <div className="vapt-bg-animation">
         <div className="cyber-particles"></div>
@@ -54,22 +59,13 @@ const VAPTServices = () => {
             <h1 className="vapt-hero-title">
               VULNERABILITY ASSESSMENT AND PENETRATION TESTING
             </h1>
-            
-            <div className="vapt-rating">
-              <div className="stars">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="star filled" />
-                ))}
-              </div>
-              <span className="rating-text">4.9/5 - BASED ON 113 REVIEWS</span>
-            </div>
 
             <p className="vapt-hero-description">
-              Protect your business with comprehensive vulnerability assessments and penetration testing. 
-              Our expert security professionals identify weaknesses before malicious actors can exploit them.
+              Protect your business with comprehensive vulnerability assessments
+              and penetration testing. Our expert security professionals
+              identify weaknesses before malicious actors can exploit them.
             </p>
           </div>
-
         </div>
       </section>
 
@@ -96,8 +92,10 @@ const VAPTServices = () => {
             <div className="benefits-left">
               <h2 className="section-title">Why Choose Our VAPT Services?</h2>
               <p className="benefits-description">
-                Our comprehensive vulnerability assessment and penetration testing services help organizations 
-                identify, understand, and remediate security vulnerabilities before they can be exploited by malicious actors.
+                Our comprehensive vulnerability assessment and penetration
+                testing services help organizations identify, understand, and
+                remediate security vulnerabilities before they can be exploited
+                by malicious actors.
               </p>
               <ul className="benefits-list">
                 {benefits.map((benefit, index) => (
@@ -108,7 +106,7 @@ const VAPTServices = () => {
                 ))}
               </ul>
             </div>
-            <div className="benefits-right">
+            {/* <div className="benefits-right">
               <div className="stats-container">
                 <div className="stat-item">
                   <h3>500+</h3>
@@ -123,7 +121,7 @@ const VAPTServices = () => {
                   <p>Security Monitoring Support</p>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -136,22 +134,34 @@ const VAPTServices = () => {
             <div className="process-step">
               <div className="step-number">1</div>
               <h3>Planning & Reconnaissance</h3>
-              <p>Define scope, gather intelligence, and understand the target environment.</p>
+              <p>
+                Define scope, gather intelligence, and understand the target
+                environment.
+              </p>
             </div>
             <div className="process-step">
               <div className="step-number">2</div>
               <h3>Vulnerability Scanning</h3>
-              <p>Automated and manual scanning to identify potential security weaknesses.</p>
+              <p>
+                Automated and manual scanning to identify potential security
+                weaknesses.
+              </p>
             </div>
             <div className="process-step">
               <div className="step-number">3</div>
               <h3>Exploitation & Testing</h3>
-              <p>Attempt to exploit identified vulnerabilities to assess real impact.</p>
+              <p>
+                Attempt to exploit identified vulnerabilities to assess real
+                impact.
+              </p>
             </div>
             <div className="process-step">
               <div className="step-number">4</div>
               <h3>Reporting & Remediation</h3>
-              <p>Detailed report with findings, risk ratings, and remediation recommendations.</p>
+              <p>
+                Detailed report with findings, risk ratings, and remediation
+                recommendations.
+              </p>
             </div>
           </div>
         </div>
@@ -162,10 +172,11 @@ const VAPTServices = () => {
         <div className="container">
           <div className="cta-content">
             <h2>Ready to Secure Your Business?</h2>
-            <p>Get started with a comprehensive VAPT assessment today and protect your organization from cyber threats.</p>
-            <button className="cta-button" onClick={() => window.location.href = '/contact'}>
-              Get Your VAPT Quote
-            </button>
+            <p>
+              Get started with a comprehensive VAPT assessment today and protect
+              your organization from cyber threats.
+            </p>
+            <VaptCtaButton />
           </div>
         </div>
       </section>
@@ -174,3 +185,18 @@ const VAPTServices = () => {
 };
 
 export default VAPTServices;
+
+// Small component placed here to handle CTA navigation with preselected params
+function VaptCtaButton() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    // Navigate to get-started page, preselect Cybersecurity group and VAPT service
+    navigate("/get-started?group=cybersecurity&services=vapt-cyber");
+  };
+
+  return (
+    <button className="cta-button" onClick={handleClick}>
+      Get Your VAPT Quote
+    </button>
+  );
+}
